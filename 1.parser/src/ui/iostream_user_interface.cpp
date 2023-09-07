@@ -3,6 +3,8 @@
 #include <iostream>
 
 std::string IOStreamUserInterface::getInput() {
+    std::cout << "> ";
+    
     std::string input;
     std::getline(std::cin, input);
     return input;

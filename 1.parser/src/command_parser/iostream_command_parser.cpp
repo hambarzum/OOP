@@ -1,28 +1,33 @@
 #include "iostream_command_parser.hpp"
 
 #include <sstream> // std::istringstream
-#include <stdexcept> // std::runtime_error
 
 CommandContent IOStreamCommandParser::parse(const std::string& input) { 
     /// TODO: get input by stream
     
-    // ..figure out the command
+    // ..parse the command
+    // parseCommand();
 
-    // ..figure out the arguments
+    // ..parse the options and arguments
+    // parseOptionsAndArguments();
 
-    // ..find the command
-    
-
-    // ..if found create and return the correct command with corresponding arguments 
-
+    /// TODO: seperate into own functions
     std::string commandName;
     std::istringstream iss{input};
     iss >> commandName;
     double arg;
-    std::list<double> args;
+    Arguments args;
     while (iss >> arg) {
         args.push_back(arg);
     }
 
     return {commandName, args};
+}
+
+std::string IOStreamCommandParser::parseCommand() {
+
+}
+
+Arguments IOStreamCommandParser::parseOptionsAndArguments() {
+
 }

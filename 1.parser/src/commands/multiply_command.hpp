@@ -5,13 +5,8 @@
 
 class MultiplyCommand : public ICommand {
 public:
-    double execute() override;
+    double execute(const Arguments& args) override;
 
-public:
-    void setArguments(std::list<double> args) override;
-    bool hasEnoughArguments() override { return arguments_.size() >= 2; }
-private:
-    std::list<double> arguments_;
 }; // class MultiplyCommand
 
 #endif // PARSER_SRC_COMMANDS_MULTIPLY_COMMAND_HPP

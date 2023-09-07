@@ -1,13 +1,25 @@
 #include "command_controller.hpp"
 
+#include "../commands/command_factory.hpp"
+#include "../commands/add_command.hpp"
+#include "../commands/multiply_command.hpp"
+#include "../commands/quit_command.hpp"
+#include "../commands/subtract_command.hpp"
+
 #include <stdexcept> // std::runtime_error
-#include <list>
 
 CommandController::CommandController(IUserInterfacePtr ui, ICommandParserPtr parser)
     : ui_{std::move(ui)}
     , parser_{std::move(parser)}
 {
+    registerCommands();
+}
 
+void CommandController::registerCommands() {
+    registry_["add"] = std::make_shared<AddCommand>();
+    registry_["mul"] = std::make_shared<MultiplyCommand>();
+    registry_["quit"] = std::make_shared<QuitCommand>();
+    registry_["sub"] = std::make_shared<SubtractCommand>();
 }
 
 void CommandController::exec() {
@@ -21,8 +33,8 @@ void CommandController::exec() {
 }
 
 void CommandController::run() {
-    /// TODO: handle quit command and wrong commands
     while(true) {
+        /// TODO: get the input through a stream?
         const auto input = ui_->getInput();
         const auto result = handleInput(input);
         ui_->displayOutput(result);
@@ -31,11 +43,11 @@ void CommandController::run() {
 
 double CommandController::handleInput(const std::string& input) {
     const auto commandContent = parser_->parse(input);
-    const auto command = CommandFactory::makeCommand(commandContent);
-    const auto result = invokeCommand(command);
+    const auto command = CommandFactory::makeCommand(commandContent, registry_);
+    const auto result = invokeCommand(command, commandContent.second);
     return result;
 }
 
-double CommandController::invokeCommand(ICommandPtr cmd) {
-    return cmd->execute();
+double CommandController::invokeCommand(ICommandPtr cmd, const Arguments& args) {
+    return cmd->execute(args);
 }

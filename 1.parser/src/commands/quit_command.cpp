@@ -2,6 +2,6 @@
 
 #include <cstdlib>
 
-double QuitCommand::execute() {
+double QuitCommand::execute(const Arguments& args) {
     std::exit(0);
 }

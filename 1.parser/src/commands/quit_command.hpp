@@ -5,11 +5,8 @@
 
 class QuitCommand : public ICommand {
 public:
-    double execute() override;
-
-public:
-    void setArguments(std::list<double> args) override {}
-    bool hasEnoughArguments() override { return true; }
+    double execute(const Arguments& args) override;
+    
 }; // class MultiplyCommand
 
 #endif // PARSER_SRC_COMMANDS_QUIT_COMMAND_HPP

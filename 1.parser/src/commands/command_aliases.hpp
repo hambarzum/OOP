@@ -3,14 +3,13 @@
 
 #include "command.hpp"
 
-#include <list>
 #include <memory> // std::shared_ptr
-#include <utility>
 #include <string>
 #include <unordered_map>
+#include <utility> // std::pair
 
 using ICommandPtr = std::shared_ptr<ICommand>; // shared?
 using CommandRegistry = std::unordered_map<std::string, ICommandPtr>;
-using CommandContent = std::pair<std::string, std::list<double>>;
+using CommandContent = std::pair<std::string, Arguments>;
 
 #endif // PARSER_SRC_COMMANDS_COMMAND_ALIASES_HPP

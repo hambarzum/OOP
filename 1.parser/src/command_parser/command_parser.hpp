@@ -3,6 +3,8 @@
 
 #include "../commands/command_aliases.hpp"
 
+#include <string>
+
 class ICommandParser {
 public:
     virtual CommandContent parse(const std::string& input) = 0;

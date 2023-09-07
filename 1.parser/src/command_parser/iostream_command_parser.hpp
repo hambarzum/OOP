@@ -7,6 +7,10 @@
 class IOStreamCommandParser : public ICommandParser{
 public:
     CommandContent parse(const std::string& input) override;
+
+private:
+    std::string parseCommand();
+    Arguments parseOptionsAndArguments();
 }; // CommandParser
 
 #endif // PARSER_SRC_COMMAND_PARSER_IOSTREAM_COMMAND_PARSER_HPP

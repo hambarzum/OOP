@@ -1,16 +1,16 @@
 #ifndef PARSER_SRC_COMMANDS_COMMAND_HPP
 #define PARSER_SRC_COMMANDS_COMMAND_HPP
 
-#include <list>
+#include <vector>
+
+using Arguments = std::vector<double>;
 
 class ICommand {
 public:
-    virtual double execute() = 0;
+    /// TODO: support various return and parameter types
+    virtual double execute(const Arguments& args = Arguments{}) = 0;
     virtual ~ICommand() {}
-
-public:
-    virtual void setArguments(std::list<double> args) = 0;
-    virtual bool hasEnoughArguments() = 0;
+    
 }; // class Command
 
 // derive different types of commands? (IArithmeticCommand, ILogicalCommand..)
