@@ -20,7 +20,6 @@ public:
 private:
     void registerCommands();
     void run();
-    /// TODO: revisit return type for bools etc
     double invokeCommand(ICommandPtr, const Arguments&);
     double handleInput(const std::string& input);
 

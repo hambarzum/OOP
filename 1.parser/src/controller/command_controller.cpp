@@ -3,8 +3,9 @@
 #include "../commands/command_factory.hpp"
 #include "../commands/add_command.hpp"
 #include "../commands/multiply_command.hpp"
-#include "../commands/quit_command.hpp"
 #include "../commands/subtract_command.hpp"
+#include "../commands/divide_command.hpp"
+#include "../commands/quit_command.hpp"
 
 #include <stdexcept> // std::runtime_error
 
@@ -18,8 +19,9 @@ CommandController::CommandController(IUserInterfacePtr ui, ICommandParserPtr par
 void CommandController::registerCommands() {
     registry_["add"] = std::make_shared<AddCommand>();
     registry_["mul"] = std::make_shared<MultiplyCommand>();
-    registry_["quit"] = std::make_shared<QuitCommand>();
     registry_["sub"] = std::make_shared<SubtractCommand>();
+    registry_["div"] = std::make_shared<DivideCommand>();
+    registry_["quit"] = std::make_shared<QuitCommand>();
 }
 
 void CommandController::exec() {

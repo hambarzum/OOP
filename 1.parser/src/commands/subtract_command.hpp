@@ -6,7 +6,6 @@
 class SubtractCommand : public ICommand {
 public:
     double execute(const Arguments& args) override;
-    
 }; // class SubtractCommand
 
 #endif // PARSER_SRC_COMMANDS_SUBTRACT_COMMAND_HPP
