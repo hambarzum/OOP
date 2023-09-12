@@ -35,7 +35,7 @@ Third parties used in the project:
 
 ##  Build and Run
 
-In **project**:
+In **1.parser**:
 
 * Build - **make build**
 * Run - **make run**
