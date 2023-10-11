@@ -11,7 +11,8 @@ Application::Application(const std::istream& input) {
 
 void Application::exec() {
     while(true) {
-        const auto input = view_.getInput();    
+        const auto input = view_.getInput();   
+        /// TODO: control life cycle 
     }
 }
 

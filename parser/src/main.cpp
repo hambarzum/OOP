@@ -12,5 +12,4 @@ int main() {
     app.exec();
 
 
-    /// TODO: implement a logger
 }
