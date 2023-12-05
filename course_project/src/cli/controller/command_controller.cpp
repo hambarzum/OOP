@@ -23,13 +23,9 @@ void Controller::run() {
         /// TODO: handle throwing exceptions of invalid arguments
         std::stringstream inputStream{input};
         const auto command = parser_.parse(inputStream);
-
-        // execute command
+        const auto message = command->execute();
+        view_.displayOutput(message);
     }
-}
-
-std::string Controller::invokeCommand(ICommandPtr cmd) {
-    return cmd->execute();
 }
 
 } // namespace cli

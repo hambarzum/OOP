@@ -4,17 +4,20 @@
 #include <string>
 #include <variant>
 
+#include "../../model/items/item_attributes/bounding_box.hpp"
+
 namespace cli {
 
 class Value {
 public:
-    Value(double);
+    Value() = default;
+    Value(const model::Position&);
     Value(const std::string&);
     operator std::string() const;
-    operator double() const;
+    operator model::Position() const;
 
 private:
-    std::variant<double, std::string> value_;
+    std::variant<model::Position, std::string> value_;
 }; // class Value
 
 } // namespace cli

@@ -20,9 +20,4 @@ ICommandPtr CommandRegistry::findCommand(const std::string& commandName) {
     return iter->second->clone();
 }
 
-CommandRegistry& CommandRegistry::instance() {
-    static CommandRegistry instance;
-    return instance;
-}
-
 } // namespace cli

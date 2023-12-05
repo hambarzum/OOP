@@ -6,9 +6,10 @@ namespace cli {
 ICommandPtr CommandParser::parse(std::istream& input) {  
     std::string commandName;
     input >> commandName;
-    const auto command = CommandRegistry::instance().findCommand(commandName);
-    // key-Value map in command
-    // return command;
+    auto command = registry_.findCommand(commandName);
+    // loop and fetch pairs of key-value from stream
+    // addOption() to command in key-value pairs
+    return std::move(command);
 }
 
 } // namespace cli

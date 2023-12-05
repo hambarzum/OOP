@@ -3,7 +3,7 @@ all:
 	make build && make run && make clean
 
 build:
-	g++ src/main.cpp src/commands/add_command.cpp src/commands/multiply_command.cpp src/commands/subtract_command.cpp src/commands/divide_command.cpp src/commands/quit_command.cpp src/commands/command_factory.cpp src/ui/iostream_user_interface.cpp src/command_parser/iostream_command_parser.cpp src/controller/command_controller.cpp -o app
+	g++ src/main.cpp src/cli/io/view.cpp src/cli/controller/command_controller.cpp src/cli/parsing/command_parser.cpp src/cli/commands/command_registry.cpp src/cli/commands/add_command.cpp src/cli/commands/options_value.cpp src/logic/actions/add_item_action.cpp -o app
 
 run:
 	./app

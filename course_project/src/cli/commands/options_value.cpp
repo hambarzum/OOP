@@ -2,8 +2,8 @@
 
 namespace cli {
 
-Value::Value(double doubleVal)
-    : value_{doubleVal}
+Value::Value(const model::Position& posVal)
+    : value_{posVal}
 {
 
 }
@@ -18,10 +18,8 @@ Value::operator std::string() const {
     return std::get<std::string>(value_);
 }
 
-
-Value::operator double() const {
-    return std::get<double>(value_);
+Value::operator model::Position() const {
+    return std::get<model::Position>(value_);
 }
-
 
 } // namespace cli

@@ -12,11 +12,9 @@ class CommandRegistry {
 public:
     CommandRegistry();
     ICommandPtr findCommand(const std::string&);
-    static CommandRegistry& instance();
 
 private:
     std::unordered_map<std::string, ICommandPtr> registry_;
-
 }; // class CommandRegistry
 
 } // namespace cli

@@ -15,10 +15,6 @@ public:
     void run();
 
 private:
-    /// TODO: get argument via shared_ptr?
-    std::string invokeCommand(ICommandPtr);
-
-private:
     View view_;
     CommandParser parser_;
 }; // class Controller

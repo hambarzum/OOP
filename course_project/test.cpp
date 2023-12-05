@@ -6,13 +6,12 @@
 #include <stdexcept>
 #include <variant>
 
-#include "src/cli/parsing/tokenizer.hpp"
+#include "src/cli/commands/command.hpp"
 
 
 int main() {
 
-    std::variant<int, std::string> var;
-    var = "hello";
-    int result = std::visit([](const auto& val) { return val; }, var);
-    std::cout << typeid(result).name() << std::endl;
+    cli::ICommandPtr command;
+    command->execute();
+
 }

@@ -5,7 +5,7 @@
 #include <string>
 
 #include "../commands/command.hpp"
-#include "tokenizer.hpp"
+#include "../commands/command_registry.hpp"
 
 namespace cli {
 
@@ -14,7 +14,7 @@ public:
     ICommandPtr parse(std::istream&);
 
 private:
-    Tokenizer tokenizer_;
+    CommandRegistry registry_;
 }; // class CommandParser
 
 } // namespace cli
