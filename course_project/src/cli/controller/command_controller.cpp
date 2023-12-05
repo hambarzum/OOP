@@ -17,14 +17,18 @@ Controller::Controller(const View& view)
 }
 
 void Controller::run() {
-    while(true) {
+    while(isActive_) {
         const auto input = view_.getInput(); 
         /// TODO: handle throwing exceptions of invalid commands
         /// TODO: handle throwing exceptions of invalid arguments
         std::stringstream inputStream{input};
-        const auto command = parser_.parse(inputStream);
-        const auto message = command->execute();
-        view_.displayOutput(message);
+        try {
+            const auto command = parser_.parse(inputStream);
+            const auto message = command->execute();
+            view_.displayOutput(message);
+        } catch(const std::exception& e) {
+            view_.displayOutput(e.what());
+        }
     }
 }
 

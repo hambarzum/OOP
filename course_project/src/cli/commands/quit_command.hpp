@@ -7,7 +7,6 @@ namespace cli {
 
 class QuitCommand : public ICommand {
 public:
-    QuitCommand();
     std::string execute() override;
     ICommandPtr clone() override;
 }; // class QuitCommand

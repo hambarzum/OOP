@@ -1,4 +1,5 @@
-#include "../commands/command_registry.hpp"
+#include <string>
+
 #include "command_parser.hpp"
 
 namespace cli {

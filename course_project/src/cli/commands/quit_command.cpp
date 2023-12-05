@@ -3,7 +3,9 @@
 namespace cli {
 
 std::string QuitCommand::execute() {
-    /// TODO: implement (not with std::exit(0))
+    /// TODO: implement without std::exit(0)
+    std::exit(0);
+    
 }
 
 ICommandPtr QuitCommand::clone() {

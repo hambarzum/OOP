@@ -15,6 +15,7 @@ public:
     void run();
 
 private:
+    bool isActive_ = true;
     View view_;
     CommandParser parser_;
 }; // class Controller

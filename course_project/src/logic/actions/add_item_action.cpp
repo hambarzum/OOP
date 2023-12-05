@@ -5,7 +5,7 @@
 namespace logic {
 
 void AddItemAction::run() {
-    std::cout << "add action run successfully" << std::endl;
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 } // namespace logic
