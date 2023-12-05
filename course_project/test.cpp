@@ -5,13 +5,14 @@
 #include <sstream>
 #include <stdexcept>
 #include <variant>
+#include <iomanip>
 
 #include "src/cli/commands/command.hpp"
-
+#include "src/logic/director.hpp"
+#include "src/logic/actions/add_item_action.hpp"
+#include "src/application.hpp"
 
 int main() {
-
-    cli::ICommandPtr command;
-    command->execute();
+    Application::instance();
 
 }

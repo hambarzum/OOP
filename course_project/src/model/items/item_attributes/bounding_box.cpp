@@ -9,25 +9,21 @@ Position::Position(double x, double y)
 
 }
 
-BoundingBox::BoundingBox(const Position& tl, const Position& br) 
-    : topLeft_{tl}
-    , bottomRight_{br}
+BoundingBox::BoundingBox(double x1, double y1, double x2, double y2)
+    : topLeftX_{x1}
+    , topLeftY_{y1}
+    , bottomRightX_{x2}
+    , bottomRightY_{y2}
 {
 
 }
 
-BoundingBox::BoundingBox(const Position& tl, double w, double h) {
-    topLeft_ = tl;
-    bottomRight_.xCoord_ = tl.xCoord_ + w;
-    bottomRight_.yCoord_ = tl.yCoord_ - h;
-}
-
 double BoundingBox::getWidth() {
-    return bottomRight_.xCoord_ - topLeft_.xCoord_;
+    return bottomRightX_ - topLeftX_;
 }
     
 double BoundingBox::getHeight() {
-    return topLeft_.yCoord_ - bottomRight_.yCoord_;
+    return topLeftY_- bottomRightY_;
 }
 
 }

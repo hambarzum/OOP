@@ -16,7 +16,7 @@ ICommandPtr CommandRegistry::findCommand(const std::string& commandName) {
     const auto iter = registry_.find(commandName);
 
     if(iter == registry_.end()) {
-        throw std::runtime_error("Uknown command: " + commandName);
+        throw std::runtime_error("Uknown command: [" + commandName + "]\n");
     }
 
     return iter->second->clone();

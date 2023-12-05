@@ -1,7 +1,7 @@
 #ifndef COURSE_PROJECT_SRC_CLI_COMMANDS_ADD_COMMAND_HPP
 #define COURSE_PROJECT_SRC_CLI_COMMANDS_ADD_COMMAND_HPP
 
-#include <unordered_map>
+// #include <unordered_map>
 
 #include "command.hpp"
 #include "options_value.hpp"
@@ -12,10 +12,11 @@ class AddCommand : public ICommand {
 public:
     AddCommand();
     std::string execute() override;
+    void addOption(const OptionRegistry::value_type&) override;
     ICommandPtr clone() override;
 
 private:
-    std::unordered_map<std::string, Value> options_;
+    OptionRegistry options_;
 }; // class AddCommand
 
 } // namespace cli

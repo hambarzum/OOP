@@ -11,13 +11,13 @@ namespace cli {
 class Value {
 public:
     Value() = default;
-    Value(const model::Position&);
+    Value(double);
     Value(const std::string&);
     operator std::string() const;
-    operator model::Position() const;
+    operator double() const;
 
 private:
-    std::variant<model::Position, std::string> value_;
+    std::variant<double, std::string> value_;
 }; // class Value
 
 } // namespace cli
