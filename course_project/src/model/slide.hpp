@@ -2,8 +2,10 @@
 #define COURSE_PROJECT_SRC_MODEL_SLIDE_HPP
 
 #include <memory> // std::shared_ptr
+#include <vector>
 
-#include "item.hpp"
+#include "items/item.hpp"
+#include "items/item_group.hpp"
 
 namespace model {
 
@@ -30,6 +32,8 @@ public: // iterator generators
     const_iterator cend() const { return items_.cend(); }
 
 private:
+    unsigned int id_;
+    ItemGroup topItem_;
     Items items_;
     unsigned int itemCount_ = 0;
 }; // class Item

@@ -4,21 +4,25 @@
 #include <memory> // std::shared_ptr
 #include <string>
 
-#include "item_attributes.hpp"
+#include "item_attributes/bounding_box.hpp"
+#include "item_attributes/visual_attributes.hpp"
 
 namespace model {
 
-
-
-
+enum class ItemType {
+    RECTANGLE,
+    ELIPSE,
+    GROUP
+}; // enum class ItemType
 
 class ItemBase;
 using ItemBasePtr = std::shared_ptr<ItemBase>;
 
 class ItemBase {
 public:
+    ItemBase();
     virtual void addItem(ItemBasePtr) = 0;
-    virtual void removeItem(ItemBasePtr) = 0;
+    virtual void removeItem(unsigned int) = 0;
     
     void setType(ItemType type) {
         type_ = type;
@@ -28,26 +32,27 @@ public:
         return type_;
     }
 
-    void setBoundingBox(const BoundingBox& box) {
+    void setBoundingBox(const attributes::BoundingBox& box) {
         boundingBox_ = box;
     }
 
-    BoundingBox getBoundingBox() const {
+    attributes::BoundingBox getBoundingBox() const {
         return boundingBox_;
     }
 
-    void setVisualAttributes(const VisualAttributes& attr) {
+    void setVisualAttributes(const attributes::VisualAttributes& attr) {
         visualAttributes_ = attr;
     }    
     
-    VisualAttributes getVisualAttributes() const {
+    attributes::VisualAttributes getVisualAttributes() const {
         return visualAttributes_;
     }
 
 private: // protected??
+    unsigned int id_;
     ItemType type_;
-    BoundingBox boundingBox_;
-    VisualAttributes visualAttributes_;
+    attributes::BoundingBox boundingBox_;
+    attributes::VisualAttributes visualAttributes_;
 }; // class ItemBase
 
 } // namespace model

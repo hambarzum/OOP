@@ -33,6 +33,8 @@ public: // iterator generators
 private:    
     Slides slides_;
     unsigned int slideCount_ = 0;
+    // Slide currentSlide_;
+    // VisualAttributes defaultTemplateAttributes_; if very needed
 }; // class Document
 
 } // namespace model

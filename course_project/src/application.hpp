@@ -8,20 +8,20 @@
 class Application {
 public:
     static Application& instance();
-
-    logic::Director getDirector() {
+    void run();
+    
+    logic::Director getDirector() const {
         return director_;
     }
 
     /// TODO: getters for document, etc..
 
 private:
-    /// TODO: no default ctor for Controller
-    Application() = default;
+    Application();
 
 private:
     logic::Director director_;
-    // cli::Controller controller_;
+    cli::Controller controller_;
     // model::Document doc_;
 }; // class Application
 

@@ -8,11 +8,7 @@ std::string QuitCommand::execute() {
 
 }
 
-void QuitCommand::addOption(const OptionRegistry::value_type& option) {
-    // no-op method, quit doesn't support any options
-}
-
-ICommandPtr QuitCommand::clone() {
+CommandPtr QuitCommand::clone() {
     return std::make_unique<QuitCommand>(*this);
 }
 

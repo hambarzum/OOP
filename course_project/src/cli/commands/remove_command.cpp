@@ -6,7 +6,7 @@ std::string RemoveCommand::execute() {
     /// TODO: implement
 }
 
-ICommandPtr RemoveCommand::clone() {
+CommandPtr RemoveCommand::clone() {
     return std::make_unique<RemoveCommand>(*this);
 }
 

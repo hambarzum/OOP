@@ -2,26 +2,29 @@
 #define COURSE_PROJECT_SRC_CLI_COMMANDS_COMMAND_HPP
 
 #include <memory> // std::unique_ptr 
-#include <string>
 #include <unordered_map>
 
 #include "options_value.hpp"
 
 namespace cli {
 
-class ICommand;
-using ICommandPtr = std::unique_ptr<ICommand>;
+class Command;
+using CommandPtr = std::unique_ptr<Command>;
 
 /// TODO: use Value for registry value
-using OptionRegistry = std::unordered_map<std::string, std::string>;
+using OptionRegistry = std::unordered_map<std::string, Value>;
 
-class ICommand {
+class Command {
 public:
+    Value getValue(const std::string&);
+    void addOption(const OptionRegistry::value_type&);
     virtual std::string execute() = 0;
-    virtual void addOption(const OptionRegistry::value_type&) = 0;
-    virtual ICommandPtr clone() = 0;
+    virtual CommandPtr clone() = 0;
 
-    virtual ~ICommand() = default;
+    virtual ~Command() = default;
+
+protected:
+    OptionRegistry options_;
 }; // class Command
 
 } // namespace cli

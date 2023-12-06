@@ -1,5 +1,6 @@
-#include <sstream> // std::stringstream
 #include <iostream>
+#include <limits>
+#include <sstream> // std::stringstream
 
 #include "command_controller.hpp"
 
@@ -10,24 +11,26 @@
 
 namespace cli {
 
-Controller::Controller(const View& view)
-    : view_{view}
+Controller::Controller(std::istream& is, std::ostream& os)
+    : input_{is}
+    , output_{os}
 {
 
 }
 
+/// TODO: pass stream to controller instead of view
 void Controller::run() {
     while(isActive_) {
-        const auto input = view_.getInput(); 
-        /// TODO: handle throwing exceptions of invalid commands
-        /// TODO: handle throwing exceptions of invalid arguments
-        std::stringstream inputStream{input};
+        std::string inputString;
+        std::getline(input_, inputString);
+        std::stringstream inputStream{inputString};
+
         try {
             const auto command = parser_.parse(inputStream);
             const auto message = command->execute();
-            view_.displayOutput(message);
+            output_ << message << '\n';
         } catch(const std::exception& e) {
-            view_.displayOutput(e.what());
+            output_ << e.what() << '\n';
         }
     }
 }

@@ -5,18 +5,36 @@
 
 namespace cli {
 
-ICommandPtr CommandParser::parse(std::istream& input) {  
-    // constructing a valid command
+CommandPtr CommandParser::parse(std::istream& input) {  
     std::string commandName;
     input >> commandName;
     auto command = registry_.findCommand(commandName);
 
-    // adding valid options to the command
-    /// TODO: use Value for option value
-    /// TODO: restrict add command with no options?
-    std::pair<std::string, std::string> option;
+    /// TODO: restrict add command with no -item option
+    std::pair<std::string, Value> option;
+
     while(input >> option.first) {
-        input >> option.second;
+        option.second = command->getValue(option.first);
+        ValueType valueType = option.second.getType();
+
+        switch(valueType) {
+            case ValueType::DOUBLE:
+                double dTemp;
+                input >> dTemp;
+                option.second = dTemp;
+                break;
+            case ValueType::INT:
+                int iTemp;
+                input >> iTemp;
+                option.second = iTemp;
+                break;
+            case ValueType::STRING:
+                std::string sTemp;
+                input >> sTemp;
+                option.second = sTemp;
+                break;
+        }
+        
         command->addOption(option);
     }
     return std::move(command);

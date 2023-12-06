@@ -10,7 +10,7 @@ namespace cli {
 
 class CommandParser {
 public:
-    ICommandPtr parse(std::istream&);
+    CommandPtr parse(std::istream&);
 
 private:
     CommandRegistry registry_;

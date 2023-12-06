@@ -10,10 +10,7 @@ namespace model {
 class Item : public ItemBase {
 public:
     void addItem(ItemBasePtr) override;
-    void removeItem(ItemBasePtr) override;
-    
-private:
-    
+    void removeItem(unsigned int) override;
 }; // class Item
 
 using ItemPtr = std::shared_ptr<Item>;

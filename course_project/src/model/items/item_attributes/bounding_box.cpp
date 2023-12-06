@@ -2,12 +2,7 @@
 
 namespace model {
 
-Position::Position(double x, double y) 
-    : xCoord_{x}
-    , yCoord_{y}
-{
-
-}
+namespace attributes {
 
 BoundingBox::BoundingBox(double x1, double y1, double x2, double y2)
     : topLeftX_{x1}
@@ -26,4 +21,6 @@ double BoundingBox::getHeight() {
     return topLeftY_- bottomRightY_;
 }
 
-}
+} // namespace attributes
+
+} // namespace model

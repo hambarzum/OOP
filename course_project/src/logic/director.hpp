@@ -10,7 +10,9 @@ namespace logic {
 class Director {
 public:
     void doAction(IActionPtr);
-
+    // undo()
+    // redo()
+    
 private:
     std::stack<IActionPtr> undoHistory_;
     std::stack<IActionPtr> redoHistory_;

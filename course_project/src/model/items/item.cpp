@@ -8,7 +8,7 @@ void Item::addItem(ItemBasePtr item) {
     throw std::runtime_error("Item::addItem");
 }
 
-void Item::removeItem(ItemBasePtr item) {
+void Item::removeItem(unsigned int id) {
     throw std::runtime_error("Item::removeItem");
 }
 

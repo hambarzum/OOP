@@ -3,27 +3,24 @@
 
 namespace model {
 
-/// TODO: remove Position, double coords
-struct Position {
-    Position() = default;
-    Position(double x, double y);
-    double xCoord_ = 0.0;
-    double yCoord_ = 0.0;
-}; // struct Position
+namespace attributes {
 
 class BoundingBox {
 public:
+    BoundingBox() = default;
     BoundingBox(double x1, double y1, double x2, double y2);
     double getWidth();
     double getHeight();
     /// TODO: coordinate getters if needed
 
 private:
-    double topLeftX_;
-    double topLeftY_;
-    double bottomRightX_;
-    double bottomRightY_;
+    double topLeftX_ = 0.0;
+    double topLeftY_ = 0.0;
+    double bottomRightX_ = 0.0;
+    double bottomRightY_ = 0.0;
 }; // class BoundingBox
+
+} // namespace attributes
 
 } // namespace model
 

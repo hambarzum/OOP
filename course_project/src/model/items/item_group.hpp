@@ -10,6 +10,8 @@ namespace model {
 
 class ItemGroup : public ItemBase {
 public:
+    void addItem(ItemBasePtr) override;
+    void removeItem(unsigned int) override;
 
 private:
     std::vector<ItemBasePtr> items_;

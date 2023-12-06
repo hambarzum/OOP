@@ -12,7 +12,7 @@ CommandRegistry::CommandRegistry() {
     /// TODO: reegister all available commands
 }
 
-ICommandPtr CommandRegistry::findCommand(const std::string& commandName) {
+CommandPtr CommandRegistry::findCommand(const std::string& commandName) {
     const auto iter = registry_.find(commandName);
 
     if(iter == registry_.end()) {

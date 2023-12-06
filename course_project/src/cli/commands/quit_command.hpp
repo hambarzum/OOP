@@ -5,11 +5,10 @@
 
 namespace cli {
 
-class QuitCommand : public ICommand {
+class QuitCommand : public Command {
 public:
     std::string execute() override;
-    void addOption(const OptionRegistry::value_type&) override;
-    ICommandPtr clone() override;
+    CommandPtr clone() override;
 }; // class QuitCommand
 
 } // namespace cli

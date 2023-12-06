@@ -1,22 +1,20 @@
 #ifndef COURSE_PROJECT_SRC_CLI_COMMANDS_ADD_COMMAND_HPP
 #define COURSE_PROJECT_SRC_CLI_COMMANDS_ADD_COMMAND_HPP
 
-// #include <unordered_map>
-
+#include "../../model/items/item_base.hpp"
 #include "command.hpp"
 #include "options_value.hpp"
 
 namespace cli { 
 
-class AddCommand : public ICommand {
+class AddCommand : public Command {
 public:
     AddCommand();
     std::string execute() override;
-    void addOption(const OptionRegistry::value_type&) override;
-    ICommandPtr clone() override;
+    CommandPtr clone() override;
 
 private:
-    OptionRegistry options_;
+    model::ItemBasePtr constructItem();
 }; // class AddCommand
 
 } // namespace cli
