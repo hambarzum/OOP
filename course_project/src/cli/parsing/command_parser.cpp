@@ -10,7 +10,7 @@ CommandPtr CommandParser::parse(std::istream& input) {
     input >> commandName;
     auto command = registry_.findCommand(commandName);
 
-    /// TODO: restrict add command with no -item option
+    /// TODO: restrict add command with no -type option
     std::pair<std::string, Value> option;
 
     while(input >> option.first) {
@@ -37,6 +37,7 @@ CommandPtr CommandParser::parse(std::istream& input) {
         
         command->addOption(option);
     }
+
     return std::move(command);
 }
 

@@ -5,21 +5,23 @@
 #include <vector>
 
 #include "items/item.hpp"
+#include "items/item_base.hpp"
 #include "items/item_group.hpp"
 
 namespace model {
 
 class Slide {
-    using Items = std::vector<ItemPtr>;
+    using Items = std::vector<ItemBasePtr>;
 public:
     using iterator = Items::iterator;
     using const_iterator = Items::const_iterator;
 
 public:
-    void addItem(ItemPtr item);
+    Slide();
+    void addItem(ItemBasePtr item);
     void removeItem(int id);
-    ItemPtr getItem(unsigned int id) const;
-    unsigned int size() const { return itemCount_; }
+    ItemBasePtr getItem(int id) const;
+    int size() const { return itemCount_; }
 
 public: // iterator generators
     iterator begin() { return items_.begin(); }
@@ -32,10 +34,10 @@ public: // iterator generators
     const_iterator cend() const { return items_.cend(); }
 
 private:
-    unsigned int id_;
+    int id_;
     ItemGroup topItem_;
     Items items_;
-    unsigned int itemCount_ = 0;
+    int itemCount_ = 0;
 }; // class Item
 
 using SlidePtr = std::shared_ptr<Slide>;

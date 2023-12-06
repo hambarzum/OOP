@@ -1,3 +1,5 @@
+#include <stdexcept> // std::runtime_error
+
 #include "bounding_box.hpp"
 
 namespace model {
@@ -10,7 +12,9 @@ BoundingBox::BoundingBox(double x1, double y1, double x2, double y2)
     , bottomRightX_{x2}
     , bottomRightY_{y2}
 {
-
+    if(topLeftX_ > bottomRightX_ || topLeftY_ < bottomRightY_) {
+        throw std::runtime_error("Invalid coordinates for bounding box\n");
+    }
 }
 
 double BoundingBox::getWidth() {
@@ -18,7 +22,7 @@ double BoundingBox::getWidth() {
 }
     
 double BoundingBox::getHeight() {
-    return topLeftY_- bottomRightY_;
+    return topLeftY_ - bottomRightY_;
 }
 
 } // namespace attributes

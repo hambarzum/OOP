@@ -9,6 +9,7 @@ namespace model {
 
 class Item : public ItemBase {
 public:
+    Item(const std::string&);
     void addItem(ItemBasePtr) override;
     void removeItem(unsigned int) override;
 }; // class Item

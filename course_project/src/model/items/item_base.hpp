@@ -3,6 +3,7 @@
 
 #include <memory> // std::shared_ptr
 #include <string>
+#include <unordered_map>
 
 #include "item_attributes/bounding_box.hpp"
 #include "item_attributes/visual_attributes.hpp"
@@ -10,49 +11,41 @@
 namespace model {
 
 enum class ItemType {
+    /// TODO: add rhombus shape to see how easily-extendible the code is
     RECTANGLE,
     ELIPSE,
     GROUP
 }; // enum class ItemType
+
+using TypeLibrary = std::unordered_map<std::string, ItemType>;
 
 class ItemBase;
 using ItemBasePtr = std::shared_ptr<ItemBase>;
 
 class ItemBase {
 public:
-    ItemBase();
+    ItemBase() = default;
+    ItemBase(const std::string&);
+
     virtual void addItem(ItemBasePtr) = 0;
     virtual void removeItem(unsigned int) = 0;
     
-    void setType(ItemType type) {
-        type_ = type;
-    }
+    void setType(ItemType type);
+    ItemType getType() const;
+    void setBoundingBox(const attributes::BoundingBox& box);
+    attributes::BoundingBox getBoundingBox() const;
+    void setVisualAttributes(const attributes::VisualAttributes& attr);
+    attributes::VisualAttributes getVisualAttributes() const;
 
-    ItemType getType() const {
-        return type_;
-    }
+private:
+   ItemType findType(const std::string&);
 
-    void setBoundingBox(const attributes::BoundingBox& box) {
-        boundingBox_ = box;
-    }
-
-    attributes::BoundingBox getBoundingBox() const {
-        return boundingBox_;
-    }
-
-    void setVisualAttributes(const attributes::VisualAttributes& attr) {
-        visualAttributes_ = attr;
-    }    
-    
-    attributes::VisualAttributes getVisualAttributes() const {
-        return visualAttributes_;
-    }
-
-private: // protected??
+private:
     unsigned int id_;
     ItemType type_;
     attributes::BoundingBox boundingBox_;
     attributes::VisualAttributes visualAttributes_;
+    static TypeLibrary typeLibrary_;
 }; // class ItemBase
 
 } // namespace model

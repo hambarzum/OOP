@@ -2,6 +2,10 @@
 
 namespace model {
 
+ItemGroup::ItemGroup() {
+    setType(ItemType::GROUP);   
+}
+
 void ItemGroup::addItem(ItemBasePtr item) {
     items_.push_back(item);
 }

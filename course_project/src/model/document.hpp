@@ -17,7 +17,7 @@ public:
     void addSlide(SlidePtr slide = std::make_shared<Slide>());
     void removeSlide(int id);
     void moveSlide(int id, int pos);
-    SlidePtr getSlide(unsigned int id) const;
+    SlidePtr getSlide(int id) const;
     unsigned int size() { return slideCount_; }
 
 public: // iterator generators
@@ -32,7 +32,7 @@ public: // iterator generators
 
 private:    
     Slides slides_;
-    unsigned int slideCount_ = 0;
+    int slideCount_ = 0;
     // Slide currentSlide_;
     // VisualAttributes defaultTemplateAttributes_; if very needed
 }; // class Document

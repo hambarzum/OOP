@@ -4,6 +4,12 @@
 
 namespace model {
 
+Item::Item(const std::string& typeName)
+    : ItemBase(typeName)
+{
+    
+}
+
 void Item::addItem(ItemBasePtr item) {
     throw std::runtime_error("Item::addItem");
 }

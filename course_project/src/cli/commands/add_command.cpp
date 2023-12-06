@@ -1,13 +1,19 @@
 #include <stdexcept> // std::runtime_error
 
-#include "../../logic/actions/add_item_action.hpp"
 #include "../../application.hpp"
+#include "../../logic/actions/add_item_action.hpp"
+#include "../../model/items/item.hpp"
+#include "../../model/items/item_group.hpp"
+#include "../../model/items/item_attributes/bounding_box.hpp"
+#include "../../model/items/item_attributes/visual_attributes.hpp"
 #include "add_command.hpp"
+
+#include <iostream>
 
 namespace cli {
 
 AddCommand::AddCommand() {
-    options_["-item"] = std::string{};
+    options_["-type"] = std::string{};
     options_["-x1"] = 0.0;
     options_["-y1"] = 0.0;
     options_["-x2"] = 0.0;
@@ -17,15 +23,18 @@ AddCommand::AddCommand() {
 }
 
 std::string AddCommand::execute() {
-    if(static_cast<std::string>(options_["-item"]) == "Slide") {
+    if(static_cast<std::string>(options_["-type"]) == "Slide") {
 
     }
     else {
         const auto item = constructItem();
-        /// TODO: have slide in options, get from application, add item to slide
-        Application::instance().getDirector().doAction(std::make_shared<logic::AddItemAction>());
+        std::cout << "height: " << item->getBoundingBox().getHeight() << " width: " << item->getBoundingBox().getWidth() << std::endl; 
+        auto slide = Application::instance().getDocument().getSlide(options_["-slide"]);
+        Application::instance().getDirector().doAction(std::make_shared<logic::AddItemAction>(item, slide));
+        std::cout << "current slide size: " << slide->size() << std::endl;
     }
-    return static_cast<std::string>(options_["-item"]) + " added successfully.\n";
+
+    return static_cast<std::string>(options_["-type"]) + " added successfully.\n";
 }
 
 CommandPtr AddCommand::clone() {
@@ -33,7 +42,21 @@ CommandPtr AddCommand::clone() {
 }
 
 model::ItemBasePtr AddCommand::constructItem() {
-    
+    model::ItemBasePtr item;
+
+    if(static_cast<std::string>(options_["-type"]) == "Group") {
+        item = std::make_shared<model::ItemGroup>();
+    }
+
+    else {
+        item = std::make_shared<model::Item>(options_["-type"]);
+    }
+
+    model::attributes::BoundingBox box{options_["-x1"], options_["-y1"], options_["-x2"], options_["-y2"]};
+    item->setBoundingBox(box);
+    /// TODO: item->setVisualAttributes();
+
+    return item;
 }
 
 } // namespace cli

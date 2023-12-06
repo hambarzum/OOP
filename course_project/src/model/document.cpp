@@ -1,4 +1,4 @@
-#include <stdexcept> // std::out_of_range
+#include <stdexcept> // std::runtime_error
 
 #include "document.hpp"
 
@@ -18,10 +18,11 @@ void Document::moveSlide(int id, int pos) {
     /// TODO: what's the logic behind??
 }
 
-SlidePtr Document::getSlide(unsigned int id) const {
+SlidePtr Document::getSlide(int id) const {
     if(id > slideCount_) {
-        throw std::out_of_range("Slide out of range.");
+        throw std::runtime_error("No slide found with given id: [" + std::to_string(id) + "]\n");
     }
+
     return slides_[id];
 }
 

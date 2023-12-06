@@ -10,6 +10,7 @@ namespace model {
 
 class ItemGroup : public ItemBase {
 public:
+    ItemGroup();
     void addItem(ItemBasePtr) override;
     void removeItem(unsigned int) override;
 
