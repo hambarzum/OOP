@@ -18,7 +18,6 @@ Controller::Controller(std::istream& is, std::ostream& os)
 
 }
 
-/// TODO: pass stream to controller instead of view
 void Controller::run() {
     while(isActive_) {
         std::string inputString;

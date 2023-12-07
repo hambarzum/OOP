@@ -7,15 +7,19 @@
 
 namespace logic {
 
-class AddItemAction : public IAction {
+namespace actions {
+
+class AddItem : public IAction {
 public:
-    AddItemAction(model::ItemBasePtr, model::SlidePtr);
+    AddItem(model::ItemBasePtr, model::SlidePtr);
     void run() override;
 
 private:
     model::ItemBasePtr item_;
     model::SlidePtr slide_;
 }; // class AddAction
+
+} // namespace actions
 
 } // namespace logic
 

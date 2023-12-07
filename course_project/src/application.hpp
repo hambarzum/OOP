@@ -11,7 +11,7 @@ public:
     void run();
 
     logic::Director getDirector() const;
-    model::Document getDocument() const; // reference or not??
+    model::Document& getDocument(); // reference or not??
     /// TODO: getters for document, etc..
 
 private:

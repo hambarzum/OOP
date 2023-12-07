@@ -2,10 +2,12 @@
 
 #include "../../application.hpp"
 #include "../../logic/actions/add_item_action.hpp"
+#include "../../logic/actions/add_slide_action.hpp"
 #include "../../model/items/item.hpp"
 #include "../../model/items/item_group.hpp"
 #include "../../model/items/item_attributes/bounding_box.hpp"
 #include "../../model/items/item_attributes/visual_attributes.hpp"
+#include "../../model/slide.hpp"
 #include "add_command.hpp"
 
 #include <iostream>
@@ -24,13 +26,22 @@ AddCommand::AddCommand() {
 
 std::string AddCommand::execute() {
     if(static_cast<std::string>(options_["-type"]) == "Slide") {
+        auto slide = std::make_shared<model::Slide>();
+        Application::instance().getDirector().doAction(std::make_shared<logic::actions::AddSlide>(slide));
 
+        /// @note log-check
+        std::cout << "document size: " << Application::instance().getDocument().size() << std::endl;
     }
     else {
         const auto item = constructItem();
+        
+        /// @note log-check
         std::cout << "height: " << item->getBoundingBox().getHeight() << " width: " << item->getBoundingBox().getWidth() << std::endl; 
+        
         auto slide = Application::instance().getDocument().getSlide(options_["-slide"]);
-        Application::instance().getDirector().doAction(std::make_shared<logic::AddItemAction>(item, slide));
+        Application::instance().getDirector().doAction(std::make_shared<logic::actions::AddItem>(item, slide));
+        
+        /// @note log-check
         std::cout << "current slide size: " << slide->size() << std::endl;
     }
 
@@ -47,7 +58,6 @@ model::ItemBasePtr AddCommand::constructItem() {
     if(static_cast<std::string>(options_["-type"]) == "Group") {
         item = std::make_shared<model::ItemGroup>();
     }
-
     else {
         item = std::make_shared<model::Item>(options_["-type"]);
     }

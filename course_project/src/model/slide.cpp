@@ -26,4 +26,8 @@ ItemBasePtr Slide::getItem(int id) const {
     return items_[id];
 }
 
+int Slide::getID() const {
+    return id_;
+}
+
 } // namespace model

@@ -21,6 +21,7 @@ public:
     void addItem(ItemBasePtr item);
     void removeItem(int id);
     ItemBasePtr getItem(int id) const;
+    int getID() const;
     int size() const { return itemCount_; }
 
 public: // iterator generators

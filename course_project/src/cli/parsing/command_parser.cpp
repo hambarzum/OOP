@@ -4,7 +4,7 @@
 #include "command_parser.hpp"
 
 namespace cli {
-
+// chadd -type Rect
 CommandPtr CommandParser::parse(std::istream& input) {  
     std::string commandName;
     input >> commandName;

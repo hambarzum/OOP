@@ -20,6 +20,6 @@ logic::Director Application::getDirector() const {
     return director_;
 }
 
-model::Document Application::getDocument() const {
+model::Document& Application::getDocument() {
     return doc_;
 }
