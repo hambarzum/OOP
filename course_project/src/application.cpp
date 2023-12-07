@@ -16,7 +16,7 @@ void Application::run() {
     controller_.run();
 }
 
-logic::Director Application::getDirector() const {
+logic::Director& Application::getDirector() {
     return director_;
 }
 

@@ -21,6 +21,7 @@ AddCommand::AddCommand() {
     options_["-x2"] = 0.0;
     options_["-y2"] = 0.0;
     options_["-slide"] = 0;
+    /// TODO: if no -slide in input, add item to document's current slide instead of slide 0
     /// TODO: add all options supported
 }
 
@@ -30,18 +31,31 @@ std::string AddCommand::execute() {
         Application::instance().getDirector().doAction(std::make_shared<logic::actions::AddSlide>(slide));
 
         /// @note log-check
+        std::cout << "Document contents: ";
+        for(auto& el : Application::instance().getDocument()) {
+            std::cout << "slide " << el->getID() << " ";
+        }
         std::cout << "document size: " << Application::instance().getDocument().size() << std::endl;
     }
     else {
-        const auto item = constructItem();
+        auto slide = Application::instance().getDocument().getSlide(options_["-slide"]);
+        /// TODO: create with ItemBuilder
         
+        // ItemBuilder builder;
+        // builder.buildItem();
+        // auto item = builder.getResult();
+        const auto item = constructItem();
+
         /// @note log-check
         std::cout << "height: " << item->getBoundingBox().getHeight() << " width: " << item->getBoundingBox().getWidth() << std::endl; 
         
-        auto slide = Application::instance().getDocument().getSlide(options_["-slide"]);
         Application::instance().getDirector().doAction(std::make_shared<logic::actions::AddItem>(item, slide));
         
         /// @note log-check
+        std::cout << "Slide contents: ";
+        for(auto& el : *slide) {
+            std::cout << "item " << el->getID() << " ";
+        }
         std::cout << "current slide size: " << slide->size() << std::endl;
     }
 
@@ -53,6 +67,9 @@ CommandPtr AddCommand::clone() {
 }
 
 model::ItemBasePtr AddCommand::constructItem() {
+    model::attributes::BoundingBox box{options_["-x1"], options_["-y1"], options_["-x2"], options_["-y2"]};
+    /// TODO: visualAttributes = ...
+
     model::ItemBasePtr item;
 
     if(static_cast<std::string>(options_["-type"]) == "Group") {
@@ -62,7 +79,6 @@ model::ItemBasePtr AddCommand::constructItem() {
         item = std::make_shared<model::Item>(options_["-type"]);
     }
 
-    model::attributes::BoundingBox box{options_["-x1"], options_["-y1"], options_["-x2"], options_["-y2"]};
     item->setBoundingBox(box);
     /// TODO: item->setVisualAttributes();
 

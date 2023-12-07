@@ -24,12 +24,13 @@ using ItemBasePtr = std::shared_ptr<ItemBase>;
 
 class ItemBase {
 public:
-    ItemBase() = default;
+    ItemBase();
     ItemBase(const std::string&);
 
     virtual void addItem(ItemBasePtr) = 0;
     virtual void removeItem(unsigned int) = 0;
     
+    int getID() const;
     void setType(ItemType type);
     ItemType getType() const;
     void setBoundingBox(const attributes::BoundingBox& box);
@@ -38,10 +39,12 @@ public:
     attributes::VisualAttributes getVisualAttributes() const;
 
 private:
-   ItemType findType(const std::string&);
+    ItemType findType(const std::string&);
+    void setID();
 
 private:
-    unsigned int id_;
+    static int idCounter_;
+    int id_;
     ItemType type_;
     attributes::BoundingBox boundingBox_;
     attributes::VisualAttributes visualAttributes_;

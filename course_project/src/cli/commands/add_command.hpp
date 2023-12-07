@@ -7,6 +7,7 @@
 
 namespace cli { 
 
+/// TODO: seperate -add_item and -add_slide
 class AddCommand : public Command {
 public:
     AddCommand();

@@ -1,8 +1,11 @@
+#include <iostream>
 #include <stdexcept> // std::runtime_error
 
 #include "item_base.hpp"
 
 namespace model {
+
+int ItemBase::idCounter_ = 0;
 
 std::unordered_map<std::string, ItemType> ItemBase::typeLibrary_ = {
     {"Rect", ItemType::RECTANGLE},
@@ -10,11 +13,17 @@ std::unordered_map<std::string, ItemType> ItemBase::typeLibrary_ = {
     {"Group", ItemType::GROUP}
 };
 
+ItemBase::ItemBase() {
+    setID();
+}
+
 ItemBase::ItemBase(const std::string& typeName) {
     type_ = findType(typeName);
+    setID();
+}
 
-    static unsigned int id = 0;
-    id_ = id++;
+int ItemBase::getID() const {
+    return id_;
 }
 
 void ItemBase::setType(ItemType type) {
@@ -49,6 +58,11 @@ ItemType ItemBase::findType(const std::string& typeName) {
     }
 
     return iter->second;
+}
+
+void ItemBase::setID() {
+    id_ = idCounter_++;
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 } // namespace model

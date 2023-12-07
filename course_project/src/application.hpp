@@ -10,9 +10,8 @@ public:
     static Application& instance();
     void run();
 
-    logic::Director getDirector() const;
-    model::Document& getDocument(); // reference or not??
-    /// TODO: getters for document, etc..
+    logic::Director& getDirector();
+    model::Document& getDocument();
 
 private:
     Application();
