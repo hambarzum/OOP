@@ -4,8 +4,8 @@
 #include "command_parser.hpp"
 
 namespace cli {
-// chadd -type Rect
-CommandPtr CommandParser::parse(std::istream& input) {  
+
+commands::CommandPtr CommandParser::parse(std::istream& input) {  
     std::string commandName;
     input >> commandName;
     auto command = registry_.findCommand(commandName);
@@ -16,7 +16,7 @@ CommandPtr CommandParser::parse(std::istream& input) {
     while(input >> option.first) {
         option.second = command->getValue(option.first);
         ValueType valueType = option.second.getType();
-
+        
         switch(valueType) {
             case ValueType::DOUBLE:
                 double dTemp;

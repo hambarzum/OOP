@@ -8,10 +8,11 @@
 
 namespace cli {
 
+namespace commands {
+
 class Command;
 using CommandPtr = std::unique_ptr<Command>;
 
-/// TODO: use Value for registry value
 using OptionRegistry = std::unordered_map<std::string, Value>;
 
 class Command {
@@ -26,6 +27,8 @@ public:
 protected:
     OptionRegistry options_;
 }; // class Command
+
+} // namespace commands
 
 } // namespace cli
 

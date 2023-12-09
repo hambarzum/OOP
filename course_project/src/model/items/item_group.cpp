@@ -2,11 +2,13 @@
 
 namespace model {
 
-ItemGroup::ItemGroup() {
-    setType(ItemType::GROUP);   
+ItemGroup::ItemGroup() 
+    : Item("Group")
+{
+
 }
 
-void ItemGroup::addItem(ItemBasePtr item) {
+void ItemGroup::addItem(ItemPtr item) {
     items_.push_back(item);
 }
 

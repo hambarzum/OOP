@@ -5,11 +5,15 @@
 
 namespace cli {
 
-class QuitCommand : public Command {
+namespace commands {
+
+class Quit : public Command {
 public:
     std::string execute() override;
     CommandPtr clone() override;
-}; // class QuitCommand
+}; // class Quit
+
+} // namespace commands
 
 } // namespace cli
 

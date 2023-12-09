@@ -2,12 +2,16 @@
 
 namespace cli {
 
-std::string RemoveCommand::execute() {
+namespace commands {
+
+std::string Remove::execute() {
     /// TODO: implement
 }
 
-CommandPtr RemoveCommand::clone() {
-    return std::make_unique<RemoveCommand>(*this);
+CommandPtr Remove::clone() {
+    return std::make_unique<Remove>(*this);
 }
 
-}
+} // namespace commands
+
+} // namespace cli

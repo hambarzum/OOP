@@ -5,12 +5,16 @@
 
 namespace cli {
 
-class RemoveCommand : public Command {
+namespace commands {
+
+class Remove : public Command {
 public:
-    RemoveCommand();
+    Remove();
     std::string execute() override;
     CommandPtr clone() override;
-}; // class RemoveCommand
+}; // class Remove
+
+} // namespace commands
 
 } // namespace cli
 

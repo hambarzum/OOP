@@ -5,7 +5,6 @@
 #include <string>
 
 #include "../parsing/command_parser.hpp"
-#include "../commands/command.hpp"
 
 namespace cli {
 

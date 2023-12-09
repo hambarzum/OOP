@@ -23,3 +23,11 @@ logic::Director& Application::getDirector() {
 model::Document& Application::getDocument() {
     return doc_;
 }
+
+rendering::ItemViewLibrary& Application::getItemViewLibrary() {
+    return itemViewLib_;
+}
+
+rendering::RendererLibrary& Application::getRendererLibrary() {
+    return rendererLib_;
+}

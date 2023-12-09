@@ -1,22 +1,25 @@
 #ifndef COURSE_PROJECT_SRC_CLI_COMMANDS_ADD_COMMAND_HPP
 #define COURSE_PROJECT_SRC_CLI_COMMANDS_ADD_COMMAND_HPP
 
-#include "../../model/items/item_base.hpp"
+#include "../../model/items/item.hpp"
 #include "command.hpp"
 #include "options_value.hpp"
 
 namespace cli { 
 
-/// TODO: seperate -add_item and -add_slide
-class AddCommand : public Command {
+namespace commands {
+
+class AddItem : public Command {
 public:
-    AddCommand();
+    AddItem();
     std::string execute() override;
     CommandPtr clone() override;
 
 private:
-    model::ItemBasePtr constructItem();
-}; // class AddCommand
+    model::ItemPtr constructItem();
+}; // class AddItem
+
+} // namespace commands
 
 } // namespace cli
 

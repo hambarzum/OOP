@@ -5,22 +5,22 @@
 #include <vector>
 
 #include "items/item.hpp"
-#include "items/item_base.hpp"
+#include "items/item.hpp"
 #include "items/item_group.hpp"
 
 namespace model {
 
 class Slide {
-    using Items = std::vector<ItemBasePtr>;
 public:
     using iterator = Items::iterator;
     using const_iterator = Items::const_iterator;
 
 public:
     Slide();
-    void addItem(ItemBasePtr item);
+    void addItem(ItemPtr item);
     void removeItem(int id);
-    ItemBasePtr getItem(int id) const;
+    ItemPtr getItem(int id) const;
+    ItemGroup getTopItem() const;
     int getID() const;
     int size() const { return itemCount_; }
 

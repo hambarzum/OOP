@@ -4,20 +4,30 @@
 #include <memory> // std::shared_ptr
 #include <vector>
 
-#include "item_base.hpp"
+#include "item.hpp"
 
 namespace model {
 
-class ItemGroup : public ItemBase {
+using Items = std::vector<ItemPtr>;
+
+class ItemGroup : public Item {
 public:
+    using iterator = Items::iterator;
+    using const_iterator = Items::const_iterator;
+
     ItemGroup();
-    void addItem(ItemBasePtr) override;
-    void removeItem(unsigned int) override;
+    void addItem(ItemPtr);
+    void removeItem(unsigned int);
+
+/// TODO: create proper iterator generators
+public: 
+
 
 private:
-    std::vector<ItemBasePtr> items_;
+    Items items_;
 }; // class ItemGroup
 
 } // namespace models
+
 
 #endif // COURSE_PROJECT_MODEL_ITEMS_ITEM_GROUP_HPP

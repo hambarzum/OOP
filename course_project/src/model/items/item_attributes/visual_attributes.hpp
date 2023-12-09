@@ -1,20 +1,16 @@
 #ifndef COURSE_PROJECT_SRC_MODEL_ITEMS_ITEM_ATTRIBUTES_VISUAL_ATTRIBUTES_HPP
 #define COURSE_PROJECT_SRC_MODEL_ITEMS_ITEM_ATTRIBUTES_VISUAL_ATTRIBUTES_HPP
 
-namespace model {
+namespace model::attributes {
 
-namespace attributes {
-
-class VisualAttributes {
+class StyleAttributes {
 public:
     /// TODO: implement
 
 private:
 
-}; // class VisualAttributes
+}; // class StyleAttributes
 
-} // namespace attributes
-
-} // namespace model
+} // namespace model::attributes
 
 #endif // COURSE_PROJECT_SRC_MODEL_ITEMS_ITEM_ATTRIBUTES_VISUAL_ATTRIBUTES_HPP
