@@ -19,6 +19,7 @@ void Controller::run() {
         std::stringstream inputStream{inputString};
 
         try {
+            // TK: you do not need parser memebr, you can make parser local variable here 
             const auto command = parser_.parse(inputStream);
             const auto message = command->execute();
             output_ << message << '\n';

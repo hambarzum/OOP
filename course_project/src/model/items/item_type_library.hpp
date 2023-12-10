@@ -6,6 +6,7 @@
 
 namespace model {
 
+// TK: Don't mix Shape & Item types, Rectangle, Elipse are Shape types, Item has shape type, but Item type is either Group or Leaf
 enum class ItemType {
     /// TODO: add rhombus shape to see how easily-extendible the code is
     RECTANGLE,
@@ -13,8 +14,10 @@ enum class ItemType {
     GROUP
 }; // enum class ItemType
 
+// This is not item but Shape library and it is part of rendering
 class ItemTypeLibrary {
 public:
+    // TK: What is purpose of the argument, do not skip local variable names in header files
     static ItemType getType(const std::string&);
 
 private:

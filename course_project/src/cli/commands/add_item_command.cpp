@@ -31,9 +31,11 @@ std::string AddItem::execute() {
     auto slide = Application::instance().getDocument().getSlide(options_["-slide"]);
     const auto item = constructItem();
 
+    // TK: Instead of this, create Logger class and write inot log
     /// @note log-check
     std::cout << "height: " << item->getBoundingBox().getHeight() << " width: " << item->getBoundingBox().getWidth() << std::endl; 
     
+    // TK: Pls do not write train like code, it makes reading complicated, split into lines
     Application::instance().getDirector().doAction(std::make_shared<logic::actions::AddItem>(item, slide));
     
     /// @note log-check
