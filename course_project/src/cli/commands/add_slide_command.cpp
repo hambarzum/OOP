@@ -10,6 +10,7 @@ namespace commands {
 
 std::string AddSlide::execute() {
     const auto slide = std::make_shared<model::Slide>();
+    // TK: too long, split into lines
     Application::instance().getDirector().doAction(std::make_shared<logic::actions::AddSlide>(slide));
 
     /// @note log-check

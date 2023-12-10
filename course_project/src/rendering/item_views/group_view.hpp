@@ -6,6 +6,8 @@
 
 namespace rendering {
 
+// TK: In reality if you do not need to visualize group itself you do not need to have GroupView
+// And in fasct Group view is the same RectasbgleView (it is invisible rectangle that contains other shapes)
 class GroupView : public ItemView {
 public:
     void render(IRendererPtr) const override;

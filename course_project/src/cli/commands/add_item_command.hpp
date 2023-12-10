@@ -7,6 +7,7 @@
 
 namespace cli { 
 
+// TK: try to keep namespace names as short as possible, in this case instead of commands you  can use 'cmd'
 namespace commands {
 
 class AddItem : public Command {

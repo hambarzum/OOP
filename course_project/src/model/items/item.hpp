@@ -27,8 +27,9 @@ public:
 private:
     int id_;
     ItemType type_;
-    attributes::BoundingBox boundingBox_;
-    attributes::StyleAttributes styleAttributes_;
+    attributes::BoundingBox boundingBox_;  // Geometry is rectangle, it's type doesn't belong to attributes:: namespace 
+    attributes::StyleAttributes styleAttributes_; //TK: both, item and Attributes belong to your model, why you need extra attributes:: namespace?
+
 }; // class Item
 
 using ItemPtr = std::shared_ptr<Item>;
