@@ -14,7 +14,7 @@ public:
     void run() override;
 
 private:
-    model::SlidePtr slide_;
+    model::SlidePtr slide_; // TK: Also need to keep position (index of the slide)
 }; // class AddSlide
 
 } // namespace actions

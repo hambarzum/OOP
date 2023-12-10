@@ -13,7 +13,7 @@ public:
     commands::CommandPtr parse(std::istream&);
 
 private:
-    CommandRegistry registry_;
+    CommandRegistry registry_; // TK: command registry is not part of the parser, it belongs to controller, actually you can create parser as local object each time, parser just uses command registry
 }; // class CommandParser
 
 } // namespace cli

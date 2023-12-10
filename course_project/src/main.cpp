@@ -5,6 +5,6 @@
 
 #include "application.hpp"
 
-int main() {
+int main() { // TK: pls add command line args to allow user pass commands in text file as a script
     Application::instance().run();
 }
