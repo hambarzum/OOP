@@ -6,7 +6,7 @@ namespace logic {
  
 namespace actions {
 
-AddItem::AddItem(model::ItemPtr item, model::SlidePtr slide) 
+AddItem::AddItem(model::ItemBasePtr item, model::SlidePtr slide) 
     : item_{item}
     , slide_{slide}
 {

@@ -4,18 +4,17 @@
 #include "cli/controller/command_controller.hpp"
 #include "logic/director.hpp"
 #include "model/document.hpp"
-#include "rendering/item_view_library.hpp"
-#include "rendering/renderers/renderer_library.hpp"
+#include "rendering/shape_library.hpp"
 
 class Application {
 public:
     static Application& instance();
     void run();
+    void quit();
 
     logic::Director& getDirector();
     model::Document& getDocument();
-    rendering::ItemViewLibrary& getItemViewLibrary();
-    rendering::RendererLibrary& getRendererLibrary();
+    rendering::ShapeLibrary& getShapeLibrary();
 
 private:
     Application();
@@ -24,8 +23,7 @@ private:
     logic::Director director_;
     cli::Controller controller_;
     model::Document doc_;
-    rendering::ItemViewLibrary itemViewLib_;
-    rendering::RendererLibrary rendererLib_;
+    rendering::ShapeLibrary shapeLib_;
 }; // class Application
 
 #endif // COURSE_PROJECT_SRC_APPLICATION_HPP

@@ -2,7 +2,11 @@
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
+
+Remove::Remove() {
+    
+}
 
 std::string Remove::execute() {
     /// TODO: implement
@@ -12,6 +16,6 @@ CommandPtr Remove::clone() {
     return std::make_unique<Remove>(*this);
 }
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli

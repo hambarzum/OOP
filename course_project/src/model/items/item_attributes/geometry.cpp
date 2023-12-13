@@ -1,12 +1,10 @@
 #include <stdexcept> // std::runtime_error
 
-#include "bounding_box.hpp"
+#include "geometry.hpp"
 
 namespace model {
 
-namespace attributes {
-
-BoundingBox::BoundingBox(double x1, double y1, double x2, double y2)
+Geometry::Geometry(double x1, double y1, double x2, double y2)
     : topLeftX_{x1}
     , topLeftY_{y1}
     , bottomRightX_{x2}
@@ -17,14 +15,12 @@ BoundingBox::BoundingBox(double x1, double y1, double x2, double y2)
     }
 }
 
-double BoundingBox::getWidth() {
+double Geometry::getWidth() {
     return bottomRightX_ - topLeftX_;
 }
     
-double BoundingBox::getHeight() {
+double Geometry::getHeight() {
     return topLeftY_ - bottomRightY_;
 }
-
-} // namespace attributes
 
 } // namespace model

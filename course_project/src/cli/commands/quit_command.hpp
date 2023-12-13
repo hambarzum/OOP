@@ -5,7 +5,7 @@
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
 
 class Quit : public Command {
 public:
@@ -13,7 +13,7 @@ public:
     CommandPtr clone() override;
 }; // class Quit
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli
 

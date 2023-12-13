@@ -14,25 +14,23 @@ public:
     using const_iterator = Slides::const_iterator;
 
 public:
-    void addSlide(SlidePtr slide = std::make_shared<Slide>());
-    void removeSlide(int id);
-    void moveSlide(int id, int pos);
-    SlidePtr getSlide(int id) const;
-    unsigned int size() { return slideCount_; }
+    void addSlide(SlidePtr slide, int pos = -1);
+    /// TODO: SlidePtr removeSlide(int id);
+    SlidePtr getSlide(int idx) const;
+    int size() const;
 
 public: // iterator generators
-    iterator begin() { return slides_.begin(); }
-    iterator end() { return slides_.end(); }
+    iterator begin();
+    iterator end();
 
-    const_iterator begin() const { return slides_.cbegin(); }
-    const_iterator end() const { return slides_.cend(); }
+    const_iterator begin() const;
+    const_iterator end() const;
     
-    const_iterator cbegin() const { return slides_.cbegin(); }
-    const_iterator cend() const { return slides_.cend(); }
+    const_iterator cbegin() const;
+    const_iterator cend() const;
 
 private:    
     Slides slides_;
-    int slideCount_ = 0;
     // Slide currentSlide_;
 }; // class Document
 

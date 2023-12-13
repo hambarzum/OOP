@@ -7,7 +7,7 @@
 
 namespace cli { 
 
-namespace commands {
+namespace cmd {
 
 class AddItem : public Command {
 public:
@@ -16,10 +16,10 @@ public:
     CommandPtr clone() override;
 
 private:
-    model::ItemPtr constructItem();
+    model::ItemBasePtr constructItem();
 }; // class AddItem
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli
 

@@ -12,12 +12,13 @@ class Controller {
 public:
     Controller(std::istream&, std::ostream&);
     void run();
+    void endLoop();
 
 private:
     bool isActive_ = true;
     std::istream& input_;
     std::ostream& output_;
-    CommandParser parser_;
+    CommandRegistry registry_;
 }; // class Controller
 
 } // namespace cli

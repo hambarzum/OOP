@@ -4,8 +4,6 @@
 #include <string>
 #include <variant>
 
-#include "../../model/items/item_attributes/bounding_box.hpp"
-
 namespace cli {
 
 enum class ValueType : int {

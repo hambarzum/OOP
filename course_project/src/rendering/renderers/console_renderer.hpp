@@ -7,10 +7,8 @@ namespace rendering {
 
 class ConsoleRenderer : public IRenderer {
 public:
-    IRendererPtr clone() override;
-    void renderRect(model::ItemPtr) override;
-    void renderElipse(model::ItemPtr) override;
-    void renderGroup(model::ItemPtr) override;
+    void render(model::SlidePtr) override;
+
 }; // class ConsoleRenderer
 
 } // namespace rendering

@@ -2,20 +2,20 @@
 
 #include "add_item_command.hpp"
 #include "add_slide_command.hpp"
-#include "display_command.hpp"
+#include "print_command.hpp"
 #include "command_registry.hpp"
 #include "quit_command.hpp"
 
 namespace cli {
 
 CommandRegistry::CommandRegistry() {
-    registry_["add_item"] = std::make_unique<commands::AddItem>();
-    registry_["add_slide"] = std::make_unique<commands::AddSlide>();
-    registry_["display"] = std::make_unique<commands::Display>();
-    registry_["quit"] = std::make_unique<commands::Quit>();
+    registry_["add_item"] = std::make_unique<cmd::AddItem>();
+    registry_["add_slide"] = std::make_unique<cmd::AddSlide>();
+    registry_["print"] = std::make_unique<cmd::Print>();
+    registry_["quit"] = std::make_unique<cmd::Quit>();
 }
 
-commands::CommandPtr CommandRegistry::findCommand(const std::string& commandName) {
+cmd::CommandPtr CommandRegistry::findCommand(const std::string& commandName) const {
     const auto iter = registry_.find(commandName);
 
     if(iter == registry_.end()) {

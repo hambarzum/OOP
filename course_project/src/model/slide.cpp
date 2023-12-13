@@ -5,36 +5,53 @@
 namespace model {
 
 Slide::Slide() {
-    static int id = 0;
-    id_ = id++;
+
 }
 
-void Slide::addItem(ItemPtr item) {
-    items_.push_back(item);
+void Slide::addItem(ItemBasePtr item) {
     topItem_.addItem(item);
-    ++itemCount_;
 }
 
-void Slide::removeItem(int id) {
-    items_.erase(std::next(items_.begin(), id));
-    topItem_.removeItem(id);
-    --itemCount_;
-}
-
-ItemPtr Slide::getItem(int id) const {
-    if(items_.size() == 0 || id > itemCount_ || id < 0) {
-        throw std::runtime_error("No item found with given id: [" + std::to_string(id) + "]\n");
+ItemBasePtr Slide::getItem(ItemID id) const {
+    for(auto item : topItem_) {
+        if(item->getID() == id) {
+            return item;
+        }
     }
-
-    return items_[id];
+    
+    throw std::runtime_error("No item found with ID: [" + std::to_string(id) + "]\n");
 }
 
 ItemGroup Slide::getTopItem() const {
     return topItem_;
 }
 
-int Slide::getID() const {
-    return id_;
+int Slide::size() const {
+    return topItem_.size();
+}
+
+Slide::iterator Slide::begin() {
+    return topItem_.begin();
+}
+
+Slide::iterator Slide::end() {
+    return topItem_.end();
+}
+
+Slide::const_iterator Slide::begin() const {
+    return topItem_.cbegin();
+}
+
+Slide::const_iterator Slide::end() const {
+    return topItem_.cend();
+}
+
+Slide::const_iterator Slide::cbegin() const {
+    return topItem_.cbegin();
+}
+
+Slide::const_iterator Slide::cend() const {
+    return topItem_.cend();
 }
 
 } // namespace model

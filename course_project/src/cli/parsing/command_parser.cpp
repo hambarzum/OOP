@@ -5,10 +5,10 @@
 
 namespace cli {
 
-commands::CommandPtr CommandParser::parse(std::istream& input) {  
+cmd::CommandPtr CommandParser::parse(std::istream& input, const CommandRegistry& registry) {  
     std::string commandName;
     input >> commandName;
-    auto command = registry_.findCommand(commandName);
+    auto command = registry.findCommand(commandName);
 
     /// TODO: restrict add command with no -type option
     std::pair<std::string, Value> option;

@@ -11,10 +11,10 @@ namespace cli {
 class CommandRegistry {
 public:
     CommandRegistry();
-    commands::CommandPtr findCommand(const std::string&);
+    cmd::CommandPtr findCommand(const std::string&) const;
 
 private:
-    std::unordered_map<std::string, commands::CommandPtr> registry_;
+    std::unordered_map<std::string, cmd::CommandPtr> registry_;
 }; // class CommandRegistry
 
 } // namespace cli

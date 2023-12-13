@@ -10,11 +10,12 @@ namespace actions {
 
 class AddSlide : public IAction {
 public:
-    AddSlide(model::SlidePtr);
+    AddSlide(model::SlidePtr, int pos);
     void run() override;
 
 private:
     model::SlidePtr slide_;
+    int position_;
 }; // class AddSlide
 
 } // namespace actions

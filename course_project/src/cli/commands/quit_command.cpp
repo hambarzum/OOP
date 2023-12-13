@@ -1,19 +1,19 @@
+#include "../../application.hpp"
 #include "quit_command.hpp"
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
 
 std::string Quit::execute() {
-    /// TODO: implement without std::exit(0)
-    std::exit(0);
-
+    Application::instance().quit();
+    return "Quitting...\n"; // doesn't reach here
 }
 
 CommandPtr Quit::clone() {
     return std::make_unique<Quit>(*this);
 }
 
-} // namespace commands
+} // namespace cmd
 
 }

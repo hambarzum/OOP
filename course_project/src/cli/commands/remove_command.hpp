@@ -5,7 +5,7 @@
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
 
 class Remove : public Command {
 public:
@@ -14,7 +14,7 @@ public:
     CommandPtr clone() override;
 }; // class Remove
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli
 

@@ -19,13 +19,18 @@ void Controller::run() {
         std::stringstream inputStream{inputString};
 
         try {
-            const auto command = parser_.parse(inputStream);
+            CommandParser parser_;
+            const auto command = parser_.parse(inputStream, registry_);
             const auto message = command->execute();
             output_ << message << '\n';
         } catch(const std::exception& e) {
             output_ << e.what() << '\n';
         }
     }
+}
+
+void Controller::endLoop() {
+    isActive_ = false;
 }
 
 } // namespace cli

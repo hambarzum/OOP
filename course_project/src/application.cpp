@@ -16,6 +16,10 @@ void Application::run() {
     controller_.run();
 }
 
+void Application::quit() {
+    controller_.endLoop();
+}
+
 logic::Director& Application::getDirector() {
     return director_;
 }
@@ -24,10 +28,6 @@ model::Document& Application::getDocument() {
     return doc_;
 }
 
-rendering::ItemViewLibrary& Application::getItemViewLibrary() {
-    return itemViewLib_;
-}
-
-rendering::RendererLibrary& Application::getRendererLibrary() {
-    return rendererLib_;
+rendering::ShapeLibrary& Application::getShapeLibrary() {
+    return shapeLib_;
 }

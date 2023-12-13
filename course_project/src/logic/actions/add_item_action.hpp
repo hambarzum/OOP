@@ -11,11 +11,11 @@ namespace actions {
 
 class AddItem : public IAction {
 public:
-    AddItem(model::ItemPtr, model::SlidePtr);
+    AddItem(model::ItemBasePtr, model::SlidePtr);
     void run() override;
 
 private:
-    model::ItemPtr item_;
+    model::ItemBasePtr item_;
     model::SlidePtr slide_;
 }; // class AddAction
 

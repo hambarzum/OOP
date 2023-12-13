@@ -1,21 +1,21 @@
 #ifndef COURSE_PROJECT_SRC_RENDERING_ITEM_RENDERER_LIBRARY_HPP
 #define COURSE_PROJECT_SRC_RENDERING_ITEM_RENDERER_LIBRARY_HPP
 
+#include <string>
 #include <unordered_map>
 
-#include "../model/items/item.hpp"
-#include "item_views/item_view.hpp"
+#include "shapes/shape.hpp"
 
 namespace rendering {
 
-class ItemViewLibrary {
+class ShapeLibrary {
 public:
-    ItemViewLibrary();
-    ItemViewPtr getView(model::ItemPtr);
+    ShapeLibrary();
+    IShapePtr getShape(model::ItemBasePtr);
 
 private:
-    std::unordered_map<model::ItemType, ItemViewPtr> library_;
-}; // class ItemViewLibrary
+    std::unordered_map<std::string, IShapePtr> lib_;
+}; // class ShapeLibrary
 
 } // namespace rendering
 

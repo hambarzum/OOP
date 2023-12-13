@@ -8,7 +8,7 @@
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
 
 class Command;
 using CommandPtr = std::unique_ptr<Command>;
@@ -28,7 +28,7 @@ protected:
     OptionRegistry options_;
 }; // class Command
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli
 

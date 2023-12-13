@@ -4,18 +4,13 @@
 #include <memory> // std::unique_ptr
 
 #include "../../model/items/item.hpp"
+#include "../../model/slide.hpp"
 
 namespace rendering {
 
-class IRenderer;
-using IRendererPtr = std::unique_ptr<IRenderer>;
-
 class IRenderer {
 public:
-    virtual IRendererPtr clone() = 0;
-    virtual void renderRect(model::ItemPtr) = 0;
-    virtual void renderElipse(model::ItemPtr) = 0;
-    virtual void renderGroup(model::ItemPtr) = 0;
+    virtual void render(model::SlidePtr) = 0;
 
 }; // class IRenderer
 

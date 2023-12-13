@@ -5,40 +5,36 @@
 #include <vector>
 
 #include "items/item.hpp"
-#include "items/item.hpp"
 #include "items/item_group.hpp"
 
 namespace model {
 
 class Slide {
 public:
-    using iterator = Items::iterator;
-    using const_iterator = Items::const_iterator;
+    using iterator = ItemGroup::iterator;
+    using const_iterator = ItemGroup::const_iterator;
 
 public:
-    Slide();
-    void addItem(ItemPtr item);
-    void removeItem(int id);
-    ItemPtr getItem(int id) const;
+    Slide(); 
+    void addItem(ItemBasePtr item);
+    /// TODO: ItemPtr removeItem(ItemID id);
+    ItemBasePtr getItem(ItemID id) const;
     ItemGroup getTopItem() const;
-    int getID() const;
-    int size() const { return itemCount_; }
+    int size() const;
 
 public: // iterator generators
-    iterator begin() { return items_.begin(); }
-    iterator end() { return items_.end(); }
+    iterator begin();
+    iterator end();
 
-    const_iterator begin() const { return items_.cbegin(); }
-    const_iterator end() const { return items_.cend(); }
+    const_iterator begin() const;
+    const_iterator end() const;
     
-    const_iterator cbegin() const { return items_.cbegin(); }
-    const_iterator cend() const { return items_.cend(); }
+    const_iterator cbegin() const;
+    const_iterator cend() const;
 
 private:
-    int id_;
+    /// TODO: use topItem_ id as slide id?
     ItemGroup topItem_;
-    Items items_;
-    int itemCount_ = 0;
 }; // class Item
 
 using SlidePtr = std::shared_ptr<Slide>;

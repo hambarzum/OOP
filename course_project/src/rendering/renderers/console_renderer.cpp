@@ -1,30 +1,18 @@
 #include <iostream> // std::cout, std::endl
 
-#include "../../model/items/item_group.hpp"
+#include "../../application.hpp"
+#include "../../model/items/item.hpp"
+#include "../textual_displayable.hpp"
 #include "console_renderer.hpp"
 
 namespace rendering {
 
-IRendererPtr ConsoleRenderer::clone() {
-    return std::make_unique<ConsoleRenderer>(*this);
-}
+void ConsoleRenderer::render(model::SlidePtr slide) {
+    auto topItem = slide->getTopItem();
+    auto shape = Application::instance().getShapeLibrary().getShape(std::make_shared<model::ItemGroup>(topItem));
 
-void ConsoleRenderer::renderRect(model::ItemPtr item) {
-    std::cout << "[ID: " << item->getID() << "] " << "Rect: " << "width - " << item->getBoundingBox().getWidth() << ", height - "
-    << item->getBoundingBox().getHeight() << std::endl;
-} 
-
-void ConsoleRenderer::renderElipse(model::ItemPtr item) {
-    /// TODO: implement
-} 
-
-void ConsoleRenderer::renderGroup(model::ItemPtr item) {
-    /* for(auto el : *item) {
-        /// TODO: figure out how to find out each element's type and call corresponding function
-        std::cout << item->getID() << " " << "Rect: " << "width - " << item->getBoundingBox().getWidth() << " height - "
-        << item->getBoundingBox().getHeight() << std::endl;
-    } */
-    std::cout << "[ID: " << std::to_string(item->getID()) << "] Group rendered" << std::endl;
+    auto displayableShape = dynamic_cast<ITextualDisplayable*>(shape.get());
+    displayableShape->print();
 }
 
 } // namespace rendering

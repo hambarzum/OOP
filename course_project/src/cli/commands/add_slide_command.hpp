@@ -5,15 +5,16 @@
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
 
 class AddSlide : public Command {
 public:
+    AddSlide();
     std::string execute() override;
     CommandPtr clone() override;
 }; // class AddSlide
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli
 

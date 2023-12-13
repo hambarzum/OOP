@@ -5,39 +5,22 @@
 
 namespace model {
 
-Item::Item(const std::string& typeName) {
-    static int idCounter_ = 0;
-    
-    type_ = ItemTypeLibrary::getType(typeName);
-    id_ = idCounter_++;
+Item::Item(const std::string& shapeType) 
+    : ItemBase(shapeType)
+{
+
 }
 
-int Item::getID() const {
-    return id_;
+void Item::setShapeType(const std::string& type) {
+    shapeType_ = type;
 }
 
-void Item::setType(ItemType type) {
-    type_ = type;
-}
-
-ItemType Item::getType() const {
-    return type_;
-}
-
-void Item::setBoundingBox(const attributes::BoundingBox& box) {
-    boundingBox_ = box;
-}
-
-attributes::BoundingBox Item::getBoundingBox() const {
-    return boundingBox_;
+void Item::setGeometry(const Geometry& geom) {
+    geom_ = geom;
 }
 
 void Item::setStyleAttributes(const attributes::StyleAttributes& attr) {
     styleAttributes_ = attr;
-}
-
-attributes::StyleAttributes Item::getStyleAttributes() const {
-    return styleAttributes_;
 }
 
 } // namespace model

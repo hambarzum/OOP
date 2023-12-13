@@ -4,7 +4,7 @@
 
 namespace cli {
 
-namespace commands {
+namespace cmd {
 
 Value Command::getValue(const std::string& optionName) {
     const auto iter = options_.find(optionName);
@@ -20,6 +20,6 @@ void Command::addOption(const OptionRegistry::value_type& option) {
     options_[option.first] = option.second;
 }
 
-} // namespace commands
+} // namespace cmd
 
 } // namespace cli

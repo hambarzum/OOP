@@ -10,10 +10,8 @@ namespace cli {
 
 class CommandParser {
 public:
-    commands::CommandPtr parse(std::istream&);
-
-private:
-    CommandRegistry registry_;
+    cmd::CommandPtr parse(std::istream&, const CommandRegistry&);
+    
 }; // class CommandParser
 
 } // namespace cli
