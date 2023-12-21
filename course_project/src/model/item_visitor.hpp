@@ -12,6 +12,8 @@ class ItemVisitor {
 public:
     virtual void visitItem(Item&) = 0;
     virtual void visitGroup(ItemGroup&) = 0;
+
+    virtual ~ItemVisitor() = default;
 }; // class ItemVisitor
 
 using ItemVisitorPtr = std::shared_ptr<ItemVisitor>;

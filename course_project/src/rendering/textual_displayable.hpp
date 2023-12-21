@@ -8,6 +8,8 @@ namespace rendering {
 class ITextualDisplayable {
 public:
     virtual void print() = 0;
+
+    virtual ~ITextualDisplayable() = default;
 }; // class ITextualDisplayable
 
 using ITextualDisplayablePtr = std::unique_ptr<ITextualDisplayable>;

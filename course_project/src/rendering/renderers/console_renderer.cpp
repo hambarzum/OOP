@@ -1,4 +1,5 @@
 #include <iostream> // std::cout, std::endl
+#include <stdexcept> // std::runtime_error
 
 #include "../../application.hpp"
 #include "../../model/items/item.hpp"
@@ -17,9 +18,16 @@ void ConsoleRenderer::render(model::ItemBasePtr item) {
 }
 
 void ConsoleRenderer::visitItem(model::Item& item) {
-    auto shapeLib = Application::instance().getShapeLibrary();
-    auto displayableShape = shapeLib.getShape(std::make_shared<model::Item>(item));
-    dynamic_cast<ITextualDisplayable*>(displayableShape.get())->print();
+    auto& shapeLib = Application::instance().getShapeLibrary();
+    
+    auto shape = shapeLib.getShape(std::make_shared<model::Item>(item));
+    auto displayable = dynamic_cast<ITextualDisplayable*>(shape.get());
+    
+    if(displayable) {
+        displayable->print();
+    } else {
+        throw std::runtime_error("Couldn't display item");
+    }
 }
 
 void ConsoleRenderer::visitGroup(model::ItemGroup& group) {
