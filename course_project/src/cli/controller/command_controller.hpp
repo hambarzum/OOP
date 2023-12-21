@@ -13,6 +13,7 @@ public:
     Controller(std::istream&, std::ostream&);
     void run();
     void endLoop();
+    void output(const std::string&);
 
 private:
     bool isActive_ = true;

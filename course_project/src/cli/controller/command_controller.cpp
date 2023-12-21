@@ -33,4 +33,8 @@ void Controller::endLoop() {
     isActive_ = false;
 }
 
+void Controller::output(const std::string& msg) {
+    output_ << msg << '\n';
+}
+
 } // namespace cli

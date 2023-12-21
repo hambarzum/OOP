@@ -21,8 +21,9 @@ public:
 
 
 int main() {
+    std::string raw = R"(hello
+    world)";
 
-    Base1* p = new Derived;
-    auto pD = dynamic_cast<Base2*>(p);
+    std::cout << raw;
 
 }
