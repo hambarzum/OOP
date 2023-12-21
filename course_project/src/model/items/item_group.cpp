@@ -8,6 +8,10 @@ ItemGroup::ItemGroup()
 
 }
 
+void ItemGroup::accept(ItemVisitorPtr visitor) {
+    visitor->visitGroup(*this);
+}
+
 void ItemGroup::addItem(ItemBasePtr item) {
     items_.push_back(item);
 }

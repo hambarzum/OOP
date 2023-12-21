@@ -7,7 +7,7 @@ namespace cmd {
 
 std::string Quit::execute() {
     Application::instance().quit();
-    return "Quitting...\n"; // doesn't reach here
+    return "Quitting...\n";
 }
 
 CommandPtr Quit::clone() {

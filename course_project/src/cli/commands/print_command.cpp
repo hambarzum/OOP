@@ -15,7 +15,7 @@ std::string Print::execute() {
     rendering::ConsoleRenderer renderer;
     renderer.render(slide);
 
-    return "Display executed successfully\n";
+    return "Print executed successfully\n";
 }
 
 CommandPtr Print::clone() {

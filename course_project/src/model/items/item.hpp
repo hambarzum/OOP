@@ -18,9 +18,11 @@ class Item : public ItemBase {
 public:
     Item(const std::string& shapeType);
     
+    void accept(ItemVisitorPtr) override;
+
     void setShapeType(const std::string& type) override;
-    virtual void setGeometry(const Geometry& geom) override;
-    virtual void setStyleAttributes(const attributes::StyleAttributes& style) override;
+    void setGeometry(const Geometry& geom) override;
+    void setStyleAttributes(const attributes::StyleAttributes& style) override;
 
 }; // class Item
 

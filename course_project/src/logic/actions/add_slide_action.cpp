@@ -13,7 +13,7 @@ AddSlide::AddSlide(model::SlidePtr slide, int pos)
 }
 
 void AddSlide::run() {
-    auto doc = Application::instance().getDocument();
+    auto& doc = Application::instance().getDocument();
     doc.addSlide(slide_, position_);
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

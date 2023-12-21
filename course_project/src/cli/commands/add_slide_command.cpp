@@ -16,7 +16,7 @@ std::string AddSlide::execute() {
     const auto slide = std::make_shared<model::Slide>();
     auto action = std::make_shared<logic::actions::AddSlide>(slide, options_["-pos"]);
     
-    auto director = Application::instance().getDirector();
+    auto& director = Application::instance().getDirector();
     director.doAction(action);
 
     /// @note log-check
@@ -26,7 +26,7 @@ std::string AddSlide::execute() {
     }
     std::cout << "document size: " << Application::instance().getDocument().size() << std::endl;
 
-    return std::string{"Slide added successfully.\n"};
+    return "Slide added successfully.\n";
 }
 
 CommandPtr AddSlide::clone() {

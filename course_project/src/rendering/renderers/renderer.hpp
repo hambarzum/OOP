@@ -3,15 +3,16 @@
 
 #include <memory> // std::unique_ptr
 
-#include "../../model/items/item.hpp"
+#include "../../model/items/item_base.hpp"
+#include "../../model/item_visitor.hpp"
 #include "../../model/slide.hpp"
 
 namespace rendering {
 
-class IRenderer {
+class IRenderer : public model::ItemVisitor {
 public:
     virtual void render(model::SlidePtr) = 0;
-
+    virtual void render(model::ItemBasePtr) = 0;
 }; // class IRenderer
 
 } // namespace Rendering

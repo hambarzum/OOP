@@ -9,7 +9,7 @@ ShapeLibrary::ShapeLibrary() {
 }
 
 IShapePtr ShapeLibrary::getShape(model::ItemBasePtr item) {
-    const auto iter = lib_.find(item->getShapeType());
+    auto iter = lib_.find(item->getShapeType());
 
     iter->second->setItem(item);
 

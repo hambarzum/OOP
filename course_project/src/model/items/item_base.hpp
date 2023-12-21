@@ -4,6 +4,7 @@
 #include <memory> // std:shared_ptr
 #include <string>
 
+#include "../item_visitor.hpp"
 #include "item_attributes/geometry.hpp"
 #include "item_attributes/visual_attributes.hpp"
 
@@ -15,6 +16,8 @@ class ItemBase {
 public:
     ItemBase(const std::string& shapeType);
     
+    virtual void accept(ItemVisitorPtr) = 0;
+
     ItemID getID() const;
 
     virtual void setShapeType(const std::string& type) = 0;

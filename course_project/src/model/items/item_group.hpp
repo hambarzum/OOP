@@ -8,14 +8,15 @@
 
 namespace model {
 
-using Items = std::vector<ItemBasePtr>;
-
 class ItemGroup : public ItemBase {
+    using Items = std::vector<ItemBasePtr>;
 public:
     using iterator = Items::iterator;
     using const_iterator = Items::const_iterator;
 
     ItemGroup();
+
+    void accept(ItemVisitorPtr) override;
 
     void setShapeType(const std::string& type) override;
     void setGeometry(const Geometry& geom) override;

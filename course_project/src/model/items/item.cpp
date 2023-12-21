@@ -11,6 +11,10 @@ Item::Item(const std::string& shapeType)
 
 }
 
+void Item::accept(ItemVisitorPtr visitor) {
+    visitor->visitItem(*this);
+}
+
 void Item::setShapeType(const std::string& type) {
     shapeType_ = type;
 }

@@ -8,7 +8,9 @@ namespace rendering {
 class ConsoleRenderer : public IRenderer {
 public:
     void render(model::SlidePtr) override;
-
+    void render(model::ItemBasePtr) override;
+    void visitItem(model::Item&) override;
+    void visitGroup(model::ItemGroup&) override;
 }; // class ConsoleRenderer
 
 } // namespace rendering

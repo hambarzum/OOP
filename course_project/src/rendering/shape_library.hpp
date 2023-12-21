@@ -15,6 +15,7 @@ public:
 
 private:
     std::unordered_map<std::string, IShapePtr> lib_;
+
 }; // class ShapeLibrary
 
 } // namespace rendering

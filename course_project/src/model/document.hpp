@@ -1,6 +1,7 @@
 #ifndef COURSE_PROJECT_SRC_MODEL_DOCUMENT_HPP
 #define COURSE_PROJECT_SRC_MODEL_DOCUMENT_HPP
 
+#include <memory> // std::shared_ptr
 #include <vector>
 
 #include "slide.hpp"
@@ -33,6 +34,8 @@ private:
     Slides slides_;
     // Slide currentSlide_;
 }; // class Document
+
+// using DocumentPtr = std::shared_ptr<Document>;
 
 } // namespace model
 

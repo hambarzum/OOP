@@ -18,7 +18,7 @@ namespace cli {
 namespace cmd {
 
 AddItem::AddItem() {
-    options_["-type"] = std::string{};
+    options_["-type"] = std::string{"Rect"};
     options_["-x1"] = 0.0;
     options_["-y1"] = 0.0;
     options_["-x2"] = 0.0;
@@ -28,14 +28,15 @@ AddItem::AddItem() {
 }
 
 std::string AddItem::execute() {
-    auto slide = Application::instance().getDocument().getSlide(options_["-slide"]);
+    auto document = Application::instance().getDocument();
+    auto slide = document.getSlide(options_["-slide"]);
     auto item = constructItem();
     auto action = std::make_shared<logic::actions::AddItem>(item, slide);
 
     /// @note log-check
     std::cout << "height: " << item->getGeometry().getHeight() << " width: " << item->getGeometry().getWidth() << std::endl; 
     
-    auto director = Application::instance().getDirector();
+    auto& director = Application::instance().getDirector();
     director.doAction(action);
 
     /// @note log-check
@@ -46,7 +47,7 @@ std::string AddItem::execute() {
     std::cout << "current slide size: " << slide->size() << std::endl;
 
 
-    return static_cast<std::string>(options_["-type"]) + " added successfully.\n";
+    return item->getShapeType() + " added successfully.\n";
 }
 
 CommandPtr AddItem::clone() {
