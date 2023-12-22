@@ -19,12 +19,14 @@ std::string AddSlide::execute() {
     auto& director = Application::instance().getDirector();
     director.doAction(action);
 
+    /* 
     /// @note log-check
     std::cout << "Document contents: ";
     for(auto& el : Application::instance().getDocument()) {
         std::cout << "slide ";
     }
     std::cout << "document size: " << Application::instance().getDocument().size() << std::endl;
+    */
 
     return "Slide added successfully.\n";
 }

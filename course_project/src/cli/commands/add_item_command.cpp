@@ -33,20 +33,22 @@ std::string AddItem::execute() {
     auto item = constructItem();
     auto action = std::make_shared<logic::actions::AddItem>(item, slide);
 
+    /*
     /// @note log-check
     std::cout << "height: " << item->getGeometry().getHeight() << " width: " << item->getGeometry().getWidth() << std::endl; 
-    
+    */
+
     auto& director = Application::instance().getDirector();
     director.doAction(action);
 
+    /*
     /// @note log-check
     std::cout << "Slide contents: ";
     for(auto& el : *slide) {
         std::cout << "item " << el->getID() << " ";
     }
-    std::cout << "current slide size: " << slide->size() << std::endl;
-
-
+    std::cout << "current slide size: " << slide->size() << std::endl; 
+    */
     return item->getShapeType() + " added successfully.\n";
 }
 

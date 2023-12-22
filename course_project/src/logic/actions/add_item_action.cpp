@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "add_item_action.hpp"
 
 namespace logic {
@@ -15,7 +13,6 @@ AddItem::AddItem(model::ItemBasePtr item, model::SlidePtr slide)
 
 void AddItem::run() {
     slide_->addItem(item_);
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 } // namespace actions
